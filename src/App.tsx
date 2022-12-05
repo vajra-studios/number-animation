@@ -96,9 +96,9 @@ const numberAnimationProps = [
   },
   {
     start: 0,
-    end: 1000,
-    time: 25,
-    randomize: false,
+    end: 100000,
+    time: 20,
+    randomize: true,
     decimalPlaces: 0,
   },
   {
@@ -121,7 +121,7 @@ const App = () => {
   // reset state variable after a delay to allow animations to reset
   useEffect(() => {
     if (resetClicked) {
-      setTimeout(() => setResetClicked(false), 1000);
+      setTimeout(() => setResetClicked(false), 500);
     }
   }, [resetClicked]);
 
@@ -135,11 +135,11 @@ const App = () => {
           </div>
         ))}
       </div>
-      <div style={{ marginTop: "12px" }}>
-        <button onClick={handleReset}>Reset All Animations</button>
-        &nbsp;(animations start in 1 second)
+      <div style={{ margin: "12px 0" }}>
+        <button onClick={handleReset}>Reset Animations</button>
+        &nbsp;(animations start in 0.5 second)
       </div>
-
+      <hr />
       <h2>Infinite Ticking</h2>
       <div style={blueBackground}>
         <NumberAnimation
