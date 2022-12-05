@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NumberAnimation from "./NumberAnimation";
 import type * as CSS from "csstype";
 
@@ -110,28 +110,48 @@ const numberAnimationProps = [
   },
 ];
 
-const App = () => (
-  <div style={pageStyles}>
-    <h2>NumberAnimation Examples</h2>
-    <div style={gridStyles}>
-      {numberAnimationProps.map((props, index) => (
-        <div key={index} style={backgroundStyles[index]}>
-          <NumberAnimation {...props} />
-        </div>
-      ))}
-    </div>
+const App = () => {
+  const [resetClicked, setResetClicked] = useState(true);
 
-    <h2>Infinite Ticking</h2>
-    <div style={blueBackground}>
-      <NumberAnimation
-        start={0}
-        time={5}
-        randomize={false}
-        decimalPlaces={0}
-        speed={1}
-      />
+  // callback function to be passed to NumberAnimation components
+  const handleReset = () => {
+    setResetClicked(true);
+  };
+
+  // reset state variable after a delay to allow animations to reset
+  useEffect(() => {
+    if (resetClicked) {
+      setTimeout(() => setResetClicked(false), 1000);
+    }
+  }, [resetClicked]);
+
+  return (
+    <div style={pageStyles}>
+      <h2>NumberAnimation Examples</h2>
+      <div style={gridStyles}>
+        {numberAnimationProps.map((props, index) => (
+          <div key={index} style={backgroundStyles[index]}>
+            <NumberAnimation {...props} onReset={resetClicked} />
+          </div>
+        ))}
+      </div>
+      <div style={{ marginTop: "12px" }}>
+        <button onClick={handleReset}>Reset All Animations</button>
+        &nbsp;(animations start in 1 second)
+      </div>
+
+      <h2>Infinite Ticking</h2>
+      <div style={blueBackground}>
+        <NumberAnimation
+          start={0}
+          time={5}
+          randomize={false}
+          decimalPlaces={0}
+          speed={1}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;

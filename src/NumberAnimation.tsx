@@ -45,6 +45,7 @@ export default function NumberAnimation(props: {
   speed?: number;
   randomize?: boolean;
   decimalPlaces?: number;
+  onReset?: boolean; // prop to receive callback
 }) {
   const {
     start,
@@ -52,7 +53,8 @@ export default function NumberAnimation(props: {
     time,
     speed,
     randomize = false,
-    decimalPlaces = 2,
+    decimalPlaces = 0,
+    onReset, // receive callback from App component
   } = props;
   const [current, setCurrent] = useState(start.toString());
 
@@ -73,7 +75,14 @@ export default function NumberAnimation(props: {
         clearInterval(intervalId);
       }
     };
-    intervalId = window.setInterval(next, 1000 / stepsPerSecond);
+
+    // check if reset button has been clicked and reset animation if necessary
+    if (onReset) {
+      setCurrent(start.toString());
+    } else {
+      intervalId = window.setInterval(next, 1000 / stepsPerSecond);
+    }
+
     return () => clearInterval(intervalId);
   }, [
     current,
@@ -85,6 +94,7 @@ export default function NumberAnimation(props: {
     randomize,
     decimalPlaces,
     currNum,
+    onReset
   ]);
   // console.log({current});
   let printNum = current;
