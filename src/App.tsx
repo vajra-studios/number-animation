@@ -53,64 +53,69 @@ const purpleBackground: CSS.Properties = {
   color: "white",
 };
 
+const backgroundStyles = [
+  blueBackground,
+  pinkBackground,
+  greenBackground,
+  yellowBackground,
+  coralBackground,
+  purpleBackground,
+];
+
+const numberAnimationProps = [
+  {
+    start: 0,
+    end: 100,
+    time: 5,
+    randomize: true,
+    decimalPlaces: 0,
+  },
+  {
+    start: 1000,
+    end: 50,
+    time: 10,
+    randomize: true,
+    decimalPlaces: 0,
+  },
+  {
+    start: 0,
+    end: 30,
+    time: 30,
+    randomize: false,
+    decimalPlaces: 2,
+  },
+  {
+    start: 100,
+    end: 0,
+    time: 20,
+    randomize: true,
+    decimalPlaces: 0,
+  },
+  {
+    start: 0,
+    end: 1000,
+    time: 25,
+    randomize: false,
+    decimalPlaces: 0,
+  },
+  {
+    start: 500,
+    end: 100,
+    time: 4,
+    randomize: false,
+    decimalPlaces: 0,
+  },
+];
+
 const App = () => (
   <React.Fragment>
     <h1>NumberAnimation Examples</h1>
     <div style={gridStyles}>
-      <div style={blueBackground}>
-        <NumberAnimation
-          start={0}
-          end={100}
-          time={5}
-          randomize={true}
-          decimalPlaces={0}
-        />
-      </div>
-      <div style={pinkBackground}>
-        <NumberAnimation
-          start={1000}
-          end={50}
-          time={10}
-          randomize={true}
-          decimalPlaces={0}
-        />
-      </div>
-      <div style={greenBackground}>
-        <NumberAnimation
-          start={0}
-          end={10}
-          time={5}
-          randomize={false}
-          decimalPlaces={2}
-        />
-      </div>
-      <div style={yellowBackground}>
-        <NumberAnimation
-          start={100}
-          end={0}
-          time={10}
-          randomize={true}
-          decimalPlaces={0}
-        />
-      </div>
-      <div style={coralBackground}>
-        <NumberAnimation
-          start={0}
-          end={100}
-          time={5}
-          randomize={false}
-          decimalPlaces={0}
-        />
-      </div>
-      <div style={purpleBackground}>
-        <NumberAnimation
-          start={1000}
-          end={50}
-          time={10}
-          randomize={false}
-          decimalPlaces={0}
-        />
-      </div>
+      {numberAnimationProps.map((props, index) => (
+        <div key={index} style={backgroundStyles[index]}>
+          <NumberAnimation {...props} />
+        </div>
+      ))}
     </div>
   </React.Fragment>
 );
