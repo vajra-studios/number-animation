@@ -59,7 +59,7 @@ export default function NumberAnimation(props: {
   const [current, setCurrent] = useState(start.toString());
 
   let step = 1;
-  if (speed) {
+  if (speed != null) {
     step = speed / stepsPerSecond;
   } else {
     step = calculateStep(start, end, time);
@@ -94,7 +94,7 @@ export default function NumberAnimation(props: {
     randomize,
     decimalPlaces,
     currNum,
-    onReset
+    onReset,
   ]);
   // console.log({current});
   let printNum = current;

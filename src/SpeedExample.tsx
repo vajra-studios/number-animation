@@ -12,6 +12,8 @@ const alignment: CSS.Properties = {
 const blueBackground: CSS.Properties = {
   ...alignment,
   backgroundColor: "lightblue",
+  maxWidth: "400px",
+  minWidth: "200px",
 };
 
 const buttonStyles: CSS.Properties = {
@@ -22,16 +24,23 @@ const buttonStyles: CSS.Properties = {
   fontSize: "20px",
 };
 
-const flexContainer: CSS.Properties = {
+const speedButtonsContainer: CSS.Properties = {
   display: "flex",
   flexDirection: "column",
+  justifyContent: "center",
+  paddingLeft: "12px",
+};
+
+const exampleContainer: CSS.Properties = {
+  display: "flex",
+  flexDirection: "row",
 };
 
 const SpeedExample = () => {
   const [speed, setSpeed] = useState(1);
 
   return (
-    <React.Fragment>
+    <div style={exampleContainer}>
       <div style={blueBackground}>
         <NumberAnimation
           start={0}
@@ -41,7 +50,7 @@ const SpeedExample = () => {
           speed={speed}
         />
       </div>
-      <div style={flexContainer}>
+      <div style={speedButtonsContainer}>
         <div style={buttonStyles} onClick={() => setSpeed(speed + 1)}>
           &uarr;
         </div>
@@ -49,7 +58,7 @@ const SpeedExample = () => {
           &darr;
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
