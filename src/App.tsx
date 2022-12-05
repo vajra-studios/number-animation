@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import NumberAnimation from "./NumberAnimation";
 import type * as CSS from "csstype";
 import ExamplesGrid from "./ExamplesGrid";
+import SpeedExample from "./SpeedExample";
 
 const pageStyles: CSS.Properties = {
   paddingLeft: "16px",
@@ -10,19 +10,6 @@ const pageStyles: CSS.Properties = {
   maxWidth: "600px",
 };
 
-const alignment: CSS.Properties = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: "40px",
-};
-
-const blueBackground: CSS.Properties = {
-  ...alignment,
-  backgroundColor: "lightblue",
-};
-
-
 const App = () => {
   const [speed, setSpeed] = useState(1);
 
@@ -30,18 +17,7 @@ const App = () => {
     <div style={pageStyles}>
       <ExamplesGrid />
       <hr />
-      <div></div>
-      <div style={blueBackground}>
-        <NumberAnimation
-          start={0}
-          time={5}
-          randomize={false}
-          decimalPlaces={0}
-          speed={speed}
-        />
-      </div>
-      <button onClick={() => setSpeed(speed + 1)}>Increase Speed</button>
-      <button onClick={() => setSpeed(speed - 1)}>Decrease Speed</button>
+      <SpeedExample />
     </div>
   );
 };
