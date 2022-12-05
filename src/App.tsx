@@ -2,6 +2,13 @@ import React from "react";
 import NumberAnimation from "./NumberAnimation";
 import type * as CSS from "csstype";
 
+const pageStyles: CSS.Properties = {
+  paddingLeft: "16px",
+  paddingRight: "16px",
+  margin: "0 auto",
+  maxWidth: "600px",
+};
+
 const gridStyles: CSS.Properties = {
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr)",
@@ -15,10 +22,6 @@ const alignment: CSS.Properties = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  fontSize: "40px",
-};
-
-const blackText: CSS.Properties = {
   fontSize: "40px",
 };
 
@@ -108,8 +111,8 @@ const numberAnimationProps = [
 ];
 
 const App = () => (
-  <React.Fragment>
-    <h1>NumberAnimation Examples</h1>
+  <div style={pageStyles}>
+    <h2>NumberAnimation Examples</h2>
     <div style={gridStyles}>
       {numberAnimationProps.map((props, index) => (
         <div key={index} style={backgroundStyles[index]}>
@@ -117,7 +120,18 @@ const App = () => (
         </div>
       ))}
     </div>
-  </React.Fragment>
+
+    <h2>Infinite Ticking</h2>
+    <div style={blueBackground}>
+      <NumberAnimation
+        start={0}
+        time={5}
+        randomize={false}
+        decimalPlaces={0}
+        speed={1}
+      />
+    </div>
+  </div>
 );
 
 export default App;

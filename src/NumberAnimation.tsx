@@ -40,31 +40,58 @@ over a given duration. The number can be randomized for a more organic feel and
 the number of decimal places can be specified. */
 export default function NumberAnimation(props: {
   start: number;
-  end: number;
+  end?: number;
   time: number;
+  speed?: number;
   randomize?: boolean;
   decimalPlaces?: number;
 }) {
-  const { start, end, time, randomize = false, decimalPlaces = 2 } = props;
-  const step = calculateStep(start, end, time);
-  // const numberSteps = numValues(start, end, step);
+  const {
+    start,
+    end = Number.MAX_SAFE_INTEGER,
+    time,
+    speed,
+    randomize = false,
+    decimalPlaces = 2,
+  } = props;
   const [current, setCurrent] = useState(start.toString());
+
+  let step = 1;
+  if (speed) {
+    step = speed / stepsPerSecond;
+  } else {
+    step = calculateStep(start, end, time);
+  }
   const currNum = Number.parseFloat(current);
   useEffect(() => {
     let intervalId = 0;
     const next = () => {
       const nextValue = nextNumber(start, end, currNum, step, randomize);
-      if (nextValue === end || nextValue === start) {
-        setCurrent(nextValue.toString());
-      } else {
-        setCurrent(toFixed(nextValue, decimalPlaces));
-      }
+
+      setCurrent(nextValue.toString());
       if (nextValue === end) {
         clearInterval(intervalId);
       }
     };
     intervalId = window.setInterval(next, 1000 / stepsPerSecond);
     return () => clearInterval(intervalId);
-  }, [current, start, end, time, step, randomize, decimalPlaces, currNum]);
-  return <p>{current}</p>;
+  }, [
+    current,
+    start,
+    end,
+    time,
+    speed,
+    step,
+    randomize,
+    decimalPlaces,
+    currNum,
+  ]);
+  // console.log({current});
+  let printNum = current;
+  let parsedNum = Number(current);
+  if (parsedNum === end || parsedNum === start) {
+  } else {
+    printNum = toFixed(parsedNum, decimalPlaces);
+  }
+  return <p>{printNum}</p>;
 }
