@@ -29,6 +29,8 @@ const speedButtonsContainer: CSS.Properties = {
   flexDirection: "column",
   justifyContent: "center",
   paddingLeft: "12px",
+  alignItems: "center",
+  width: "90px"
 };
 
 const exampleContainer: CSS.Properties = {
@@ -57,6 +59,7 @@ const SpeedExample = () => {
         <div style={buttonStyles} onClick={() => setSpeed(speed - 1)}>
           &darr;
         </div>
+        <div>Speed: {speed}</div>
       </div>
     </div>
   );
