@@ -83,7 +83,7 @@ const numberAnimationProps = [
   {
     start: 0,
     end: 100,
-    time: 5,
+    time: 3,
     randomize: true,
     decimalPlaces: 0,
   },
@@ -104,14 +104,14 @@ const numberAnimationProps = [
   {
     start: 100,
     end: 0,
-    time: 20,
+    time: 2,
     randomize: true,
     decimalPlaces: 0,
   },
   {
     start: 0,
     end: 100000,
-    time: 20,
+    time: 2,
     randomize: true,
     decimalPlaces: 0,
   },
