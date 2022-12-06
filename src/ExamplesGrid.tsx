@@ -135,7 +135,7 @@ const ExamplesGrid = () => {
   // reset state variable after a delay to allow animations to reset
   useEffect(() => {
     if (resetClicked) {
-      setTimeout(() => setResetClicked(false), 500);
+      setTimeout(() => setResetClicked(false), 200);
     }
   }, [resetClicked]);
 
@@ -151,7 +151,7 @@ const ExamplesGrid = () => {
       </div>
       <div style={{ margin: "12px 0" }}>
         <button onClick={handleReset}>Reset Animations</button>
-        &nbsp;(animations start in 0.5 second)
+        &nbsp;(animations start after a short delay)
       </div>
     </React.Fragment>
   );
