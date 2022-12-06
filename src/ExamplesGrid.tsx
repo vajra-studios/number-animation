@@ -2,16 +2,9 @@ import React, { useEffect, useState } from "react";
 import NumberAnimation from "./NumberAnimation";
 import type * as CSS from "csstype";
 
-const pageStyles: CSS.Properties = {
-  paddingLeft: "16px",
-  paddingRight: "16px",
-  margin: "0 auto",
-  maxWidth: "600px",
-};
-
 const gridStyles: CSS.Properties = {
   display: "grid",
-  gridTemplateColumns: "repeat(3, 1fr)",
+  gridTemplateColumns: "repeat(2, 1fr)",
   gridTemplateRows: "repeat(2, 1fr)",
   gridGap: "10px",
   width: "600px",
@@ -23,6 +16,7 @@ const alignment: CSS.Properties = {
   alignItems: "center",
   justifyContent: "center",
   fontSize: "40px",
+  flexDirection: "column",
 };
 
 const blueBackground: CSS.Properties = {
@@ -56,18 +50,9 @@ const purpleBackground: CSS.Properties = {
   color: "white",
 };
 
-const speedButtonStyles: CSS.Properties = {
-  fontSize: "32px",
-  display: "inline-block",
-  cursor: "pointer",
-};
-const position: CSS.Properties = { position: "relative" };
-const absolutePosition: CSS.Properties = {
-  position: "absolute",
-  top: "-8px",
-  left: "0",
-  width: "100%",
-  textAlign: "center",
+const subtitleStyles: CSS.Properties = {
+  fontSize: "18px",
+  marginTop: "12px",
 };
 
 const backgroundStyles = [
@@ -79,48 +64,66 @@ const backgroundStyles = [
   purpleBackground,
 ];
 
-const numberAnimationProps = [
+const cellProps = [
   {
-    start: 0,
-    end: 100,
-    time: 3,
-    randomize: true,
-    decimalPlaces: 0,
+    numberAnimationProps: {
+      start: 1,
+      end: 100,
+      time: 3,
+      randomize: true,
+      decimalPlaces: 0,
+    },
+    subtitle: "Branches",
   },
   {
-    start: 1000,
-    end: 50,
-    time: 10,
-    randomize: true,
-    decimalPlaces: 0,
+    numberAnimationProps: {
+      start: 0,
+      end: 30,
+      time: 10,
+      randomize: false,
+      decimalPlaces: 2,
+    },
+    subtitle: "Years of Service",
   },
   {
-    start: 0,
-    end: 30,
-    time: 30,
-    randomize: false,
-    decimalPlaces: 2,
+    numberAnimationProps: {
+      start: 0,
+      end: 1000000,
+      time: 2,
+      randomize: true,
+      decimalPlaces: 0,
+    },
+    subtitle: "Revenue",
   },
   {
-    start: 100,
-    end: 0,
-    time: 2,
-    randomize: true,
-    decimalPlaces: 0,
+    numberAnimationProps: {
+      start: 10,
+      end: 500,
+      time: 4,
+      randomize: false,
+      decimalPlaces: 0,
+    },
+    subtitle: "Employees",
   },
   {
-    start: 0,
-    end: 100000,
-    time: 2,
-    randomize: true,
-    decimalPlaces: 0,
+    numberAnimationProps: {
+      start: 1000,
+      end: 50,
+      time: 10,
+      randomize: true,
+      decimalPlaces: 0,
+    },
+    subtitle: "Employees",
   },
   {
-    start: 500,
-    end: 100,
-    time: 4,
-    randomize: false,
-    decimalPlaces: 0,
+    numberAnimationProps: {
+      start: 100,
+      end: 0,
+      time: 2,
+      randomize: true,
+      decimalPlaces: 0,
+    },
+    subtitle: "Customers",
   },
 ];
 
@@ -143,11 +146,18 @@ const ExamplesGrid = () => {
     <React.Fragment>
       <h2>NumberAnimation Examples</h2>
       <div style={gridStyles}>
-        {numberAnimationProps.map((props, index) => (
-          <div key={index} style={backgroundStyles[index]}>
-            <NumberAnimation {...props} onReset={resetClicked} />
-          </div>
-        ))}
+        {cellProps.map(
+          (props, index) =>
+            index < 4 && (
+              <div key={index} style={backgroundStyles[index]}>
+                <NumberAnimation
+                  {...props.numberAnimationProps}
+                  onReset={resetClicked}
+                />
+                <div style={subtitleStyles}>{props.subtitle}</div>
+              </div>
+            )
+        )}
       </div>
       <div style={{ margin: "12px 0" }}>
         <button onClick={handleReset}>Reset Animations</button>

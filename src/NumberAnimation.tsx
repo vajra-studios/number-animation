@@ -103,5 +103,5 @@ export default function NumberAnimation(props: {
   } else {
     printNum = toFixed(parsedNum, decimalPlaces);
   }
-  return <p>{printNum}</p>;
+  return <div>{printNum}</div>;
 }

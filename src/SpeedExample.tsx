@@ -61,7 +61,7 @@ const SpeedExample = () => {
           <div style={buttonStyles} onClick={() => setSpeed(speed - 1)}>
             &darr;
           </div>
-          <div>speed: {speed}</div>
+          <div>Speed: {speed}</div>
         </div>
       </div>
     </>
