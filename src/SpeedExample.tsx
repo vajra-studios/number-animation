@@ -30,7 +30,7 @@ const speedButtonsContainer: CSS.Properties = {
   justifyContent: "center",
   paddingLeft: "12px",
   alignItems: "center",
-  width: "90px"
+  width: "90px",
 };
 
 const exampleContainer: CSS.Properties = {
@@ -42,26 +42,29 @@ const SpeedExample = () => {
   const [speed, setSpeed] = useState(1);
 
   return (
-    <div style={exampleContainer}>
-      <div style={blueBackground}>
-        <NumberAnimation
-          start={0}
-          time={5}
-          randomize={false}
-          decimalPlaces={0}
-          speed={speed}
-        />
-      </div>
-      <div style={speedButtonsContainer}>
-        <div style={buttonStyles} onClick={() => setSpeed(speed + 1)}>
-          &uarr;
+    <>
+      <h2>We continue to grow...</h2>
+      <div style={exampleContainer}>
+        <div style={blueBackground}>
+          <NumberAnimation
+            start={0}
+            time={5}
+            randomize={false}
+            decimalPlaces={0}
+            speed={speed}
+          />
         </div>
-        <div style={buttonStyles} onClick={() => setSpeed(speed - 1)}>
-          &darr;
+        <div style={speedButtonsContainer}>
+          <div style={buttonStyles} onClick={() => setSpeed(speed + 1)}>
+            &uarr;
+          </div>
+          <div style={buttonStyles} onClick={() => setSpeed(speed - 1)}>
+            &darr;
+          </div>
+          <div>speed: {speed}</div>
         </div>
-        <div>Speed: {speed}</div>
       </div>
-    </div>
+    </>
   );
 };
 
