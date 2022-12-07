@@ -104,6 +104,7 @@ const cellProps = [
       time: 4,
       randomize: false,
       decimalPlaces: 0,
+      finalDisplayValue: "500+",
     },
     subtitle: "Employees",
   },
@@ -115,7 +116,7 @@ const cellProps = [
       randomize: true,
       decimalPlaces: 0,
     },
-    subtitle: "Employees",
+    subtitle: "Counting down...",
   },
   {
     numberAnimationProps: {
@@ -125,7 +126,7 @@ const cellProps = [
       randomize: true,
       decimalPlaces: 0,
     },
-    subtitle: "Customers",
+    subtitle: "Counting down...",
   },
 ];
 

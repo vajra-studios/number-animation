@@ -52,6 +52,7 @@ export default function NumberAnimation(props: {
   decimalPlaces?: number;
   onReset?: boolean; // prop to receive callback
   formatNumber?: boolean;
+  finalDisplayValue?: string;
 }) {
   const {
     start,
@@ -62,6 +63,7 @@ export default function NumberAnimation(props: {
     decimalPlaces = 0,
     onReset, // receive callback from App component
     formatNumber = false,
+    finalDisplayValue,
   } = props;
   const [current, setCurrent] = useState(start.toString());
 
@@ -107,6 +109,9 @@ export default function NumberAnimation(props: {
   let printNum = current;
   let parsedNum = Number(current);
   if (parsedNum === end || parsedNum === start) {
+    if (parsedNum === end && finalDisplayValue) {
+      printNum = finalDisplayValue;
+    }
   } else {
     printNum = toFixed(parsedNum, decimalPlaces);
   }
