@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import type * as CSS from "csstype";
 import ExamplesGrid from "./ExamplesGrid";
 import SpeedExample from "./SpeedExample";
@@ -11,8 +11,6 @@ const pageStyles: CSS.Properties = {
 };
 
 const App = () => {
-  const [speed, setSpeed] = useState(1);
-
   return (
     <div style={pageStyles}>
       <ExamplesGrid />

@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 
+// Function to format a number with commas.
+const addCommas = (num: string): string => {
+  // Use a regular expression to match groups of three digits in the number.
+
+  // Add commas to the number by replacing groups of three digits with the
+  // matched group of digits separated by commas.
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 const stepsPerSecond = 10;
 function calculateStep(start: number, end: number, time: number): number {
   const distance = end - start;
@@ -31,10 +40,6 @@ function toFixed(n: number, decimalPlaces: number): string {
   return Number(n).toFixed(decimalPlaces);
 }
 
-// function numValues(start: number, end: number, step: number): number {
-//   return Math.floor((end - start) / step);
-// }
-
 /* React component that animates a number from a start value to an end value 
 over a given duration. The number can be randomized for a more organic feel and 
 the number of decimal places can be specified. */
@@ -46,6 +51,7 @@ export default function NumberAnimation(props: {
   randomize?: boolean;
   decimalPlaces?: number;
   onReset?: boolean; // prop to receive callback
+  formatNumber?: boolean;
 }) {
   const {
     start,
@@ -55,6 +61,7 @@ export default function NumberAnimation(props: {
     randomize = false,
     decimalPlaces = 0,
     onReset, // receive callback from App component
+    formatNumber = false,
   } = props;
   const [current, setCurrent] = useState(start.toString());
 
@@ -103,5 +110,10 @@ export default function NumberAnimation(props: {
   } else {
     printNum = toFixed(parsedNum, decimalPlaces);
   }
+  // format the number with commas if the formatNumber prop is true
+  if (formatNumber) {
+    printNum = addCommas(printNum);
+  }
+
   return <div>{printNum}</div>;
 }

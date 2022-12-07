@@ -82,6 +82,7 @@ const cellProps = [
       time: 10,
       randomize: false,
       decimalPlaces: 2,
+      formatNumber: true,
     },
     subtitle: "Years of Service",
   },
@@ -92,6 +93,7 @@ const cellProps = [
       time: 2,
       randomize: true,
       decimalPlaces: 0,
+      formatNumber: true,
     },
     subtitle: "Revenue",
   },
@@ -144,7 +146,7 @@ const ExamplesGrid = () => {
 
   return (
     <React.Fragment>
-      <h2>NumberAnimation Examples</h2>
+      <h2>Animation Examples</h2>
       <div style={gridStyles}>
         {cellProps.map(
           (props, index) =>
