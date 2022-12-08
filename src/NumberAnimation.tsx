@@ -46,7 +46,7 @@ the number of decimal places can be specified. */
 export default function NumberAnimation(props: {
   start: number;
   end?: number;
-  time: number;
+  time?: number;
   speed?: number;
   randomize?: boolean;
   decimalPlaces?: number;
@@ -57,7 +57,7 @@ export default function NumberAnimation(props: {
   const {
     start,
     end = Number.MAX_SAFE_INTEGER,
-    time,
+    time = 1,
     speed,
     randomize = false,
     decimalPlaces = 0,

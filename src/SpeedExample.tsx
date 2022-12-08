@@ -28,7 +28,6 @@ const speedButtonsContainer: CSS.Properties = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  paddingLeft: "12px",
   alignItems: "center",
   width: "90px",
 };
@@ -36,7 +35,22 @@ const speedButtonsContainer: CSS.Properties = {
 const exampleContainer: CSS.Properties = {
   display: "flex",
   flexDirection: "row",
+  minHeight: "72px",
 };
+
+const example2: CSS.Properties = {
+  minWidth: "400px"
+};
+
+function secondsSinceNovember15th2022(): number {
+  const november15th2022 = new Date(2022, 10, 15);
+  const currentDate = new Date();
+  const millisecondsSinceNovember15th2022 =
+    currentDate.getTime() - november15th2022.getTime();
+  return Math.round(millisecondsSinceNovember15th2022 / 1000);
+}
+
+const popGrowthPerSecond = 2.08;
 
 const SpeedExample = () => {
   const [speed, setSpeed] = useState(1);
@@ -48,7 +62,6 @@ const SpeedExample = () => {
         <div style={blueBackground}>
           <NumberAnimation
             start={0}
-            time={5}
             randomize={false}
             decimalPlaces={0}
             speed={speed}
@@ -62,6 +75,22 @@ const SpeedExample = () => {
             &darr;
           </div>
           <div>Speed: {speed}</div>
+        </div>
+      </div>
+
+      <br />
+      <h2>Current World Population...</h2>
+      <div style={exampleContainer}>
+        <div style={{ ...blueBackground, ...example2 }}>
+          <NumberAnimation
+            start={
+              8000000000 + secondsSinceNovember15th2022() * popGrowthPerSecond
+            }
+            randomize={false}
+            decimalPlaces={0}
+            speed={popGrowthPerSecond}
+            formatNumber
+          />
         </div>
       </div>
     </>
