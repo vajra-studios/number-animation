@@ -39,7 +39,10 @@ const exampleContainer: CSS.Properties = {
 };
 
 const example2: CSS.Properties = {
-  minWidth: "400px"
+  minWidth: "320px",
+  fontFamily: "Courier New, monospace",
+  fontWeight: 700,
+  fontSize: "36px",
 };
 
 function secondsSinceNovember15th2022(): number {
@@ -78,7 +81,6 @@ const SpeedExample = () => {
         </div>
       </div>
 
-      <br />
       <h2>Current World Population...</h2>
       <div style={exampleContainer}>
         <div style={{ ...blueBackground, ...example2 }}>

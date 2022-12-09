@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NumberAnimation from "./NumberAnimation";
 import type * as CSS from "csstype";
-
-const gridStyles: CSS.Properties = {
-  display: "grid",
-  gridTemplateColumns: "repeat(2, 1fr)",
-  gridTemplateRows: "repeat(2, 1fr)",
-  gridGap: "10px",
-  width: "600px",
-  height: "300px",
-};
+import "./App.css";
 
 const alignment: CSS.Properties = {
   display: "flex",
@@ -17,6 +9,7 @@ const alignment: CSS.Properties = {
   justifyContent: "center",
   fontSize: "40px",
   flexDirection: "column",
+  padding: "4px 0",
 };
 
 const blueBackground: CSS.Properties = {
@@ -52,7 +45,7 @@ const purpleBackground: CSS.Properties = {
 
 const subtitleStyles: CSS.Properties = {
   fontSize: "18px",
-  marginTop: "12px",
+  marginTop: "4px",
 };
 
 const backgroundStyles = [
@@ -69,7 +62,7 @@ const cellProps = [
     numberAnimationProps: {
       start: 1,
       end: 100,
-      time: 3,
+      time: 1,
       randomize: true,
       decimalPlaces: 0,
     },
@@ -79,7 +72,7 @@ const cellProps = [
     numberAnimationProps: {
       start: 0,
       end: 30,
-      time: 10,
+      time: 4,
       randomize: false,
       decimalPlaces: 2,
       formatNumber: true,
@@ -90,18 +83,19 @@ const cellProps = [
     numberAnimationProps: {
       start: 0,
       end: 1000000,
-      time: 2,
+      time: 1,
       randomize: true,
       decimalPlaces: 0,
       formatNumber: true,
+      finalDisplayValue: "$1,000,000",
     },
-    subtitle: "Revenue",
+    subtitle: "Revenue Last Year",
   },
   {
     numberAnimationProps: {
       start: 10,
       end: 500,
-      time: 4,
+      time: 1.5,
       randomize: false,
       decimalPlaces: 0,
       finalDisplayValue: "500+",
@@ -148,7 +142,7 @@ const ExamplesGrid = () => {
   return (
     <React.Fragment>
       <h2>Animation Examples</h2>
-      <div style={gridStyles}>
+      <div className="examples-grid">
         {cellProps.map(
           (props, index) =>
             index < 4 && (

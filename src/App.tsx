@@ -4,17 +4,14 @@ import ExamplesGrid from "./ExamplesGrid";
 import SpeedExample from "./SpeedExample";
 
 const pageStyles: CSS.Properties = {
-  width: "100vw",
   height: "100vh",
-  background: "linear-gradient(to right, #ECE9E6, #FFFFFF)",
+  background: "linear-gradient(to top right, #ECE9E6, #FFFFFF)",
+  padding: "20px 16px",
 };
 
 const pageContentStyles: CSS.Properties = {
-  paddingLeft: "16px",
-  paddingRight: "16px",
   margin: "0 auto",
   maxWidth: "600px",
-  paddingTop: "20px" // required for the h2 margin
 };
 
 const App = () => {
